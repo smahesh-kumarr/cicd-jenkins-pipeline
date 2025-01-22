@@ -17,4 +17,4 @@ pipeline{
             }
         }
     }
-}git remote add origin https://github.com/smahesh-kumarr/cicd-jenkins-pipeline.git
+}
