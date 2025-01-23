@@ -1,6 +1,6 @@
 pipeline{
     agent{
-        label 'DevServer'
+        label 'Jenkins-Dev'
     }
     stages{
         stage('build'){
