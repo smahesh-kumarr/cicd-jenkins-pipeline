@@ -1,5 +1,5 @@
-pipeline{
-    agent{
+pipeline {
+    agent {
         label 'Jenkins-Dev'
     }
     stages{
@@ -10,7 +10,7 @@ pipeline{
 
             post {
                 success {
-                    archiveArtificates artifacts: '**/target/*.war'
+                    archiveArtifcats artifacts: '**/target/*.war'
                 }
             }
         }
