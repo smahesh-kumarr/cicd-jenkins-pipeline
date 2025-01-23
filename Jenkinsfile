@@ -1,20 +1,19 @@
 pipeline{
-    agent none
+    agent{
+        label 'DevServer'
+    }
     stages{
         stage('build'){
             steps{
-                echo "this is build stage"
+                sh 'mvn clean package'
+            }
+
+            post {
+                success {
+                    archiveArtificates artifacts: '**/target/*.war'
+                }
             }
         }
-        stage('test'){
-            steps{
-                echo "this is build stage"
-            }
-        }
-        stage('deploy'){
-            steps{
-                echo "this is build stage"
-            }
-        }
+        
     }
 }
