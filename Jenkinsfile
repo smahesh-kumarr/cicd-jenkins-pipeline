@@ -2,6 +2,9 @@ pipeline {
     agent {
         label 'Jenkins-Dev'
     }
+    tools{
+        maven 'mymaven'
+    }
     stages {
         stage('build') {
             steps {
