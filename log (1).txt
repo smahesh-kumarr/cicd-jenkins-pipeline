@@ -1,0 +1,556 @@
+Started by user MAHESH KUMAR S
+Obtained Jenkinsfile from git git@github.com:smahesh-kumarr/cicd-jenkins-pipeline.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins-Dev in /home/ubuntu/jenkins/workspace/jenkins-project
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential Jenkins-pipeline-key
+Fetching changes from the remote Git repository
+ > /usr/bin/git rev-parse --resolve-git-dir /home/ubuntu/jenkins/workspace/jenkins-project/.git # timeout=10
+ > /usr/bin/git config remote.origin.url git@github.com:smahesh-kumarr/cicd-jenkins-pipeline.git # timeout=10
+Fetching upstream changes from git@github.com:smahesh-kumarr/cicd-jenkins-pipeline.git
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_SSH to set credentials Jenkins-pipeline-key
+Verifying host key using known hosts file, will automatically accept unseen keys
+ > /usr/bin/git fetch --tags --force --progress -- git@github.com:smahesh-kumarr/cicd-jenkins-pipeline.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision 624f04add919864447a6a0ba76e655637dbb50e5 (refs/remotes/origin/main)
+Commit message: "update label in Jenkins-deploy"
+ > /usr/bin/git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f 624f04add919864447a6a0ba76e655637dbb50e5 # timeout=10
+ > /usr/bin/git rev-list --no-walk 624f04add919864447a6a0ba76e655637dbb50e5 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (build)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] load
+[Pipeline] { (script.groovy)
+[Pipeline] }
+[Pipeline] // load
+[Pipeline] echo
+This is the message from groovy script
+[Pipeline] echo
+######################################
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] sh
++ mvn clean package -DskipTests=true
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:server:jar:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:webapp:war:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:maven-project:pom:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter. @ line 51, column 24
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project com.example.maven-project:maven-project:pom:1.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Maven Project                                                      [pom]
+[INFO] Server                                                             [jar]
+[INFO] Webapp                                                             [war]
+[INFO] 
+[INFO] --------------< com.example.maven-project:maven-project >---------------
+[INFO] Building Maven Project 1.0-SNAPSHOT                                [1/3]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ maven-project ---
+[INFO] 
+[INFO] ------------------< com.example.maven-project:server >------------------
+[INFO] Building Server 1.0-SNAPSHOT                                       [2/3]
+[INFO]   from server/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ server ---
+[INFO] Deleting /home/ubuntu/jenkins/workspace/jenkins-project/server/target
+[INFO] 
+[INFO] --- resources:2.5:resources (default-resources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubuntu/jenkins/workspace/jenkins-project/server/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.3.2:compile (default-compile) @ server ---
+[INFO] Compiling 1 source file to /home/ubuntu/jenkins/workspace/jenkins-project/server/target/classes
+[INFO] 
+[INFO] --- resources:2.5:testResources (default-testResources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubuntu/jenkins/workspace/jenkins-project/server/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.3.2:testCompile (default-testCompile) @ server ---
+[INFO] Compiling 1 source file to /home/ubuntu/jenkins/workspace/jenkins-project/server/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.11:test (default-test) @ server ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ server ---
+[INFO] Building jar: /home/ubuntu/jenkins/workspace/jenkins-project/server/target/server.jar
+[INFO] 
+[INFO] ------------------< com.example.maven-project:webapp >------------------
+[INFO] Building Webapp 1.0-SNAPSHOT                                       [3/3]
+[INFO]   from webapp/pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ webapp ---
+[INFO] Deleting /home/ubuntu/jenkins/workspace/jenkins-project/webapp/target
+[INFO] 
+[INFO] --- resources:2.5:resources (default-resources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubuntu/jenkins/workspace/jenkins-project/webapp/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.3.2:compile (default-compile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- resources:2.5:testResources (default-testResources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubuntu/jenkins/workspace/jenkins-project/webapp/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.3.2:testCompile (default-testCompile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:2.11:test (default-test) @ webapp ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- war:3.4.0:war (default-war) @ webapp ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [webapp] in [/home/ubuntu/jenkins/workspace/jenkins-project/webapp/target/webapp]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/home/ubuntu/jenkins/workspace/jenkins-project/webapp/src/main/webapp]
+[INFO] Building war: /home/ubuntu/jenkins/workspace/jenkins-project/webapp/target/webapp.war
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Maven Project 1.0-SNAPSHOT:
+[INFO] 
+[INFO] Maven Project ...................................... SUCCESS [  0.340 s]
+[INFO] Server ............................................. SUCCESS [  3.374 s]
+[INFO] Webapp ............................................. SUCCESS [  0.977 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.961 s
+[INFO] Finished at: 2025-01-24T17:34:25Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (test)
+[Pipeline] parallel
+[Pipeline] { (Branch: testA)
+[Pipeline] { (Branch: testB)
+[Pipeline] stage
+[Pipeline] { (testA)
+[Pipeline] stage
+[Pipeline] { (testB)
+[Pipeline] node
+Running on Jenkins-Prod in /home/ubuntu/jenkins/workspace/jenkins-project
+[Pipeline] node
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential Jenkins-pipeline-key
+Fetching changes from the remote Git repository
+Checking out Revision 624f04add919864447a6a0ba76e655637dbb50e5 (refs/remotes/origin/main)
+Commit message: "update label in Jenkins-deploy"
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+ This is test A
+[Pipeline] sh
++ mvn test
+ > /usr/bin/git rev-parse --resolve-git-dir /home/ubuntu/jenkins/workspace/jenkins-project/.git # timeout=10
+ > /usr/bin/git config remote.origin.url git@github.com:smahesh-kumarr/cicd-jenkins-pipeline.git # timeout=10
+Fetching upstream changes from git@github.com:smahesh-kumarr/cicd-jenkins-pipeline.git
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_SSH to set credentials Jenkins-pipeline-key
+Verifying host key using known hosts file, will automatically accept unseen keys
+ > /usr/bin/git fetch --tags --force --progress -- git@github.com:smahesh-kumarr/cicd-jenkins-pipeline.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f 624f04add919864447a6a0ba76e655637dbb50e5 # timeout=10
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:server:jar:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:webapp:war:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:maven-project:pom:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter. @ line 51, column 24
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project com.example.maven-project:maven-project:pom:1.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Maven Project                                                      [pom]
+[INFO] Server                                                             [jar]
+[INFO] Webapp                                                             [war]
+[INFO] 
+[INFO] --------------< com.example.maven-project:maven-project >---------------
+[INFO] Building Maven Project 1.0-SNAPSHOT                                [1/3]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ------------------< com.example.maven-project:server >------------------
+[INFO] Building Server 1.0-SNAPSHOT                                       [2/3]
+[INFO]   from server/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:2.5:resources (default-resources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubuntu/jenkins/workspace/jenkins-project/server/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.3.2:compile (default-compile) @ server ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:2.5:testResources (default-testResources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubuntu/jenkins/workspace/jenkins-project/server/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.3.2:testCompile (default-testCompile) @ server ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.11:test (default-test) @ server ---
+[INFO] Surefire report directory: /home/ubuntu/jenkins/workspace/jenkins-project/server/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.example.TestGreeter
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 sec
+
+Results :
+
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] ------------------< com.example.maven-project:webapp >------------------
+[INFO] Building Webapp 1.0-SNAPSHOT                                       [3/3]
+[INFO]   from webapp/pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- resources:2.5:resources (default-resources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubuntu/jenkins/workspace/jenkins-project/webapp/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.3.2:compile (default-compile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- resources:2.5:testResources (default-testResources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubuntu/jenkins/workspace/jenkins-project/webapp/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.3.2:testCompile (default-testCompile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:2.11:test (default-test) @ webapp ---
+[INFO] No tests to run.
+[INFO] Surefire report directory: /home/ubuntu/jenkins/workspace/jenkins-project/webapp/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Maven Project 1.0-SNAPSHOT:
+[INFO] 
+[INFO] Maven Project ...................................... SUCCESS [  0.015 s]
+[INFO] Server ............................................. SUCCESS [  1.928 s]
+[INFO] Webapp ............................................. SUCCESS [  0.252 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.479 s
+[INFO] Finished at: 2025-01-24T17:34:31Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+Running on Jenkins-Prod in /home/ubuntu/jenkins/workspace/jenkins-project
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] {
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential Jenkins-pipeline-key
+Fetching changes from the remote Git repository
+Checking out Revision 624f04add919864447a6a0ba76e655637dbb50e5 (refs/remotes/origin/main)
+Commit message: "update label in Jenkins-deploy"
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+this is test B
+[Pipeline] sh
++ mvn test
+ > /usr/bin/git rev-parse --resolve-git-dir /home/ubuntu/jenkins/workspace/jenkins-project/.git # timeout=10
+ > /usr/bin/git config remote.origin.url git@github.com:smahesh-kumarr/cicd-jenkins-pipeline.git # timeout=10
+Fetching upstream changes from git@github.com:smahesh-kumarr/cicd-jenkins-pipeline.git
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_SSH to set credentials Jenkins-pipeline-key
+Verifying host key using known hosts file, will automatically accept unseen keys
+ > /usr/bin/git fetch --tags --force --progress -- git@github.com:smahesh-kumarr/cicd-jenkins-pipeline.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f 624f04add919864447a6a0ba76e655637dbb50e5 # timeout=10
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:server:jar:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:webapp:war:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:maven-project:pom:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter. @ line 51, column 24
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project com.example.maven-project:maven-project:pom:1.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Maven Project                                                      [pom]
+[INFO] Server                                                             [jar]
+[INFO] Webapp                                                             [war]
+[INFO] 
+[INFO] --------------< com.example.maven-project:maven-project >---------------
+[INFO] Building Maven Project 1.0-SNAPSHOT                                [1/3]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ------------------< com.example.maven-project:server >------------------
+[INFO] Building Server 1.0-SNAPSHOT                                       [2/3]
+[INFO]   from server/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:2.5:resources (default-resources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubuntu/jenkins/workspace/jenkins-project/server/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.3.2:compile (default-compile) @ server ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:2.5:testResources (default-testResources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubuntu/jenkins/workspace/jenkins-project/server/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.3.2:testCompile (default-testCompile) @ server ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.11:test (default-test) @ server ---
+[INFO] Surefire report directory: /home/ubuntu/jenkins/workspace/jenkins-project/server/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.example.TestGreeter
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.08 sec
+
+Results :
+
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] ------------------< com.example.maven-project:webapp >------------------
+[INFO] Building Webapp 1.0-SNAPSHOT                                       [3/3]
+[INFO]   from webapp/pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- resources:2.5:resources (default-resources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubuntu/jenkins/workspace/jenkins-project/webapp/src/main/resources
+[INFO] 
+[INFO] --- compiler:2.3.2:compile (default-compile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- resources:2.5:testResources (default-testResources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubuntu/jenkins/workspace/jenkins-project/webapp/src/test/resources
+[INFO] 
+[INFO] --- compiler:2.3.2:testCompile (default-testCompile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:2.11:test (default-test) @ webapp ---
+[INFO] No tests to run.
+[INFO] Surefire report directory: /home/ubuntu/jenkins/workspace/jenkins-project/webapp/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Maven Project 1.0-SNAPSHOT:
+[INFO] 
+[INFO] Maven Project ...................................... SUCCESS [  0.010 s]
+[INFO] Server ............................................. SUCCESS [  1.883 s]
+[INFO] Webapp ............................................. SUCCESS [  0.250 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.411 s
+[INFO] Finished at: 2025-01-24T17:34:38Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // parallel
+Post stage
+[Pipeline] dir
+Running in /home/ubuntu/jenkins/workspace/jenkins-project/webapp/target
+[Pipeline] {
+[Pipeline] stash
+Stashed 1 file(s)
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (deploy_dev)
+[Pipeline] node
+Running on Jenkins-Prod in /home/ubuntu/jenkins/workspace/jenkins-project
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential Jenkins-pipeline-key
+Fetching changes from the remote Git repository
+Checking out Revision 624f04add919864447a6a0ba76e655637dbb50e5 (refs/remotes/origin/main)
+Commit message: "update label in Jenkins-deploy"
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+Running in /var/www/html
+[Pipeline] {
+[Pipeline] unstash
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] sh
++ cd /var/www/html/
++ jar -xvf webapp.war
+  created: META-INF/
+ inflated: META-INF/MANIFEST.MF
+  created: WEB-INF/
+  created: WEB-INF/classes/
+ inflated: index.jsp
+ inflated: WEB-INF/web.xml
+ inflated: META-INF/maven/com.example.maven-project/webapp/pom.xml
+ inflated: META-INF/maven/com.example.maven-project/webapp/pom.properties
+[Pipeline] }
+ > /usr/bin/git rev-parse --resolve-git-dir /home/ubuntu/jenkins/workspace/jenkins-project/.git # timeout=10
+ > /usr/bin/git config remote.origin.url git@github.com:smahesh-kumarr/cicd-jenkins-pipeline.git # timeout=10
+Fetching upstream changes from git@github.com:smahesh-kumarr/cicd-jenkins-pipeline.git
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_SSH to set credentials Jenkins-pipeline-key
+Verifying host key using known hosts file, will automatically accept unseen keys
+ > /usr/bin/git fetch --tags --force --progress -- git@github.com:smahesh-kumarr/cicd-jenkins-pipeline.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f 624f04add919864447a6a0ba76e655637dbb50e5 # timeout=10
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (deploy_prod)
+Stage "deploy_prod" skipped due to when conditional
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
